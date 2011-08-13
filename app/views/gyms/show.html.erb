@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @gym.gymphoto.url(:small) %>
+<p>
+  <b>Name:</b>
+  <%= @gym.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @gym.address %>
+</p>
+
+<p>
+  <b>Nummembers:</b>
+  <%= @gym.numMembers %>
+</p>
+
+<h2>Members</h2>
+<table>
+	<tr>
+		<td>Photo</td>		
+		<td>Username</td>
+		<td>Age</td>
+		<td>Weight</td>
+	</tr>
+<% @gym.users.each do |user| %>
+<tr>
+	<td><%= image_tag user.photo.url(:small) %></td>
+    <td><%= user.username %></td>
+    <td> <%= user.age %></td>
+    <td> <%= user.weight %></td>
+</tr>
+<% end %>
+</table>
+
+
+
+<%= link_to 'Edit', edit_gym_path(@gym) %> |
+<%= link_to 'Back', gyms_path %>
