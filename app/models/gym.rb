@@ -1,5 +1,8 @@
 class Gym < ActiveRecord::Base
   has_many :users
+  has_many :gymposts
+  
+  Gym.order("totalBench desc").limit(10)
   
   has_attached_file :gymphoto, :styles => { :small => "150x150>" },
                     :url  => "/assets/products/:id/:style/:basename.:extension",
@@ -12,4 +15,9 @@ class Gym < ActiveRecord::Base
   def numMembers
     users.count
   end 
+  
+  def totalBench
+    users.sum(:maxBench)
+  end
+  
 end

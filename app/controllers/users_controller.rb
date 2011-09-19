@@ -9,6 +9,17 @@ class UsersController < ApplicationController
       format.xml  { render :xml => @users }
     end
   end
+  
+  def leaderboard
+
+    @search = User.search(params[:search])
+    @users = @search.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
 
   # GET /users/1
   # GET /users/1.xml
@@ -44,7 +55,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(:users, :notice => 'Registration successfull.') }
+        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
@@ -52,6 +63,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  
 
   # PUT /users/1
   # PUT /users/1.xml

@@ -1,11 +1,17 @@
 <h1>Listing gyms</h1>
-
+<p>
+  Sort by:
+  <%= sort_link @search, :nummembers %> |
+  <%= sort_link @search, :name %> |
+  <%= sort_link @search, :totalBench, "Total Bench", :default_order => :desc %>
+</p>
 <table>
   <tr>
+	<th>Avatar</th>
     <th>Name</th>
     <th>Address</th>
     <th>Nummembers</th>
-    <th></th>
+    <th>Total Bench</th>
     <th></th>
     <th></th>
   </tr>
@@ -16,6 +22,7 @@
     <td><%= gym.name %></td>
     <td><%= gym.address %></td>
     <td><%= gym.numMembers %></td>
+    <td><%= gym.totalBench %></td>
     <td><%= link_to 'Show', gym %></td>
     <td><%= link_to 'Edit', edit_gym_path(gym) %></td>
     <td><%= link_to 'Destroy', gym, :confirm => 'Are you sure?', :method => :delete %></td>

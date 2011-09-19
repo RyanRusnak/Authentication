@@ -16,6 +16,52 @@
   <%= @gym.numMembers %>
 </p>
 
+<p>
+  <b>Total Bench:</b>
+  <%= @gym.totalBench %>
+</p>
+
+<%= form_for [@gym, Gympost.new] do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h1>Listing gymposts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gym.gymposts.each do |gympost| %>
+  <tr>
+    <td><%= gympost.title %></td>
+    <td><%= gympost.body %></td>
+    <td><%= link_to 'Show', gympost %></td>
+    <td><%= link_to 'Edit', edit_gympost_path(gympost) %></td>
+    <td><%= link_to 'Destroy', gympost, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
 <h2>Members</h2>
 <table>
 	<tr>
@@ -23,6 +69,8 @@
 		<td>Username</td>
 		<td>Age</td>
 		<td>Weight</td>
+		<td>Max Bench</td>
+		<td>Max Squat</td>
 	</tr>
 <% @gym.users.each do |user| %>
 <tr>
@@ -30,6 +78,8 @@
     <td><%= user.username %></td>
     <td> <%= user.age %></td>
     <td> <%= user.weight %></td>
+    <td> <%= user.maxBench %></td>
+    <td> <%= user.maxSquat %></td>
 </tr>
 <% end %>
 </table>

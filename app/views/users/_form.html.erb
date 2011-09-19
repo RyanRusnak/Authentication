@@ -38,12 +38,24 @@
   <%= f.text_field :weight %>
 </div>
 <div class="field">
+  <%= f.label :height %><br />
+  <%= f.text_field :height %>
+</div>
+<div class="field">
+  <%= f.label :maxBench %><br />
+  <%= f.text_field :maxBench %>
+</div>
+<div class="field">
+  <%= f.label :maxSquat %><br />
+  <%= f.text_field :maxSquat %>
+</div>
+<div class="field">
   <%= f.label :gym_id %><br />
-  <%= f.text_field :gym_id %>
+  <%= f.collection_select(:gym_id, Gym.all, :id, :name) %>
 </div>
 
 <div class="field">
-<%= f.file_field :photo %>
+  <%= f.file_field :photo %>
 </div>
 
   <div class="actions">

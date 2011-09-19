@@ -1,0 +1,2 @@
+module GymBlogPostsHelper
+end

@@ -2,7 +2,9 @@ class GymsController < ApplicationController
   # GET /gyms
   # GET /gyms.xml
   def index
-    @gyms = Gym.all
+    @gyms = Gym.find(:all).sort_by(&:totalBench).reverse
+    @search = Gym.search(params[:search])
+    @gyms = @search.all
 
     respond_to do |format|
       format.html # index.html.erb
